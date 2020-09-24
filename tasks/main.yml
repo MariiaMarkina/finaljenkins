@@ -3,15 +3,15 @@
     apt:
       upgrade: yes
       update_cache: yes
+      
+  - name: add key for docker
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
 
   - name: Add doker repository
     apt_repository:
       repo: 'deb https://download.docker.com/linux/ubuntu bionic stable'
-      state: present
-
-  - name: add key for docker
-    apt_key:
-      url: https://download.docker.com/linux/ubuntu/gpg
       state: present
 
   - name: updating system
@@ -38,7 +38,10 @@
     copy:
       src: plugins.txt
       dest: /Dockerfile
-
+  
+  - name: installing python-docker
+    package: name=python-docker state=latest
+  
   - name: build my jenkins image
     docker_image:
       name: myjenkins
