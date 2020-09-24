@@ -54,8 +54,9 @@
     docker_container:
       name: myjenkins
       image: myjenkins
-      published_ports:
-        - 8080:8080
-      state: present
-#      volumes:
-#        - jenkins_home:/home/ubuntu/jenkins_home
+      ports:
+        - "8080:8080"
+      state: started
+      command: cat /var/jenkins_home/secrets/initialAdminPassword
+      volumes:
+        - jenkins_home:/home/ubuntu/jenkins_home
