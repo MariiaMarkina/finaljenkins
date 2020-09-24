@@ -3,42 +3,42 @@
     apt:
       upgrade: yes
       update_cache: yes
-      
-  - name: Add doker repository 
+
+  - name: Add doker repository
     apt_repository:
-      repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+      repo: 'deb https://download.docker.com/linux/ubuntu bionic stable'
       state: present
-    
+
   - name: add key for docker
-    apt_key: 
+    apt_key:
       url: https://download.docker.com/linux/ubuntu/gpg
-      state: present 
-      
+      state: present
+
   - name: updating system
     apt:
       upgrade: yes
       update_cache: yes
-      
+
   - name: installing docker-ce
     package: name=docker-ce state=latest
-    
+
   - name: Add user(s) to "docker" group
     user:
       name: "{{ item }}"
       groups: "docker"
       append: true
     loop: "{{ docker__users }}"
-    
+
   - name: copy Dockerfile
     copy:
       src: Dockerfile
       dest: /Dockerfile
-      
+
   - name: copy list of plugins
     copy:
       src: plugins.txt
       dest: /Dockerfile
-      
+
   - name: build my jenkins image
     docker_image:
       name: myjenkins
@@ -46,12 +46,13 @@
         path: /Dockerfile
       source: build
       state: present
-      
- - name: Create a docker jenkins container
-   community.general.docker_container:
-     name: myjenkins
-     image: myjenkins
-     state: present
-     published_ports: 8080:8080
-     volumes:
-      - jenkins_home:/home/ubuntu/jenkins_home
+
+  - name: Create a docker jenkins container
+    docker_container:
+      name: myjenkins
+      image: myjenkins
+      published_ports:
+        - 8080:8080
+      state: present
+#      volumes:
+#        - jenkins_home:/home/ubuntu/jenkins_home
