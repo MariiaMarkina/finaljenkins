@@ -28,3 +28,30 @@
       groups: "docker"
       append: true
     loop: "{{ docker__users }}"
+    
+  - name: copy Dockerfile
+    copy:
+      src: Dockerfile
+      dest: /Dockerfile
+      
+  - name: copy list of plugins
+    copy:
+      src: plugins.txt
+      dest: /Dockerfile
+      
+  - name: build my jenkins image
+    docker_image:
+      name: myjenkins
+      build:
+        path: /Dockerfile
+      source: build
+      state: present
+      
+ - name: Create a docker jenkins container
+   community.general.docker_container:
+     name: myjenkins
+     image: myjenkins
+     state: present
+     published_ports: 8080:8080
+     volumes:
+      - jenkins_home:/home/ubuntu/jenkins_home
