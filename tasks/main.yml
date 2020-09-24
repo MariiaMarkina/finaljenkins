@@ -1,0 +1,30 @@
+---
+  - name: updating system
+    apt:
+      upgrade: yes
+      update_cache: yes
+      
+  - name: Add doker repository 
+    apt_repository:
+      repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+      state: present
+    
+  - name: add key for docker
+    apt_key: 
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present 
+      
+  - name: updating system
+    apt:
+      upgrade: yes
+      update_cache: yes
+      
+  - name: installing docker-ce
+    package: name=docker-ce state=latest
+    
+  - name: Add user(s) to "docker" group
+    user:
+      name: "{{ item }}"
+      groups: "docker"
+      append: true
+    loop: "{{ docker__users }}"
