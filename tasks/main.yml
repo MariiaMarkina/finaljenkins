@@ -37,7 +37,7 @@
   - name: copy list of plugins
     copy:
       src: plugins.txt
-      dest: /Dockerfile
+      dest: /plugins.txt
   
   - name: installing python-docker
     package: name=python-docker state=latest
