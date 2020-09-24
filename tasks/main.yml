@@ -32,12 +32,12 @@
   - name: copy Dockerfile
     copy:
       src: Dockerfile
-      dest: /Dockerfile
+      dest: /home/ubuntu/Dockerfile
 
   - name: copy list of plugins
     copy:
       src: plugins.txt
-      dest: /plugins.txt
+      dest: /home/ubuntu/plugins.txt
   
   - name: installing python-docker
     package: name=python-docker state=latest
@@ -46,7 +46,7 @@
     docker_image:
       name: myjenkins
       build:
-        path: /Dockerfile
+        path: /home/ubuntu/
       source: build
       state: present
 
