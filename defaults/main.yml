@@ -1,2 +1,3 @@
 ---
-docker__users: ubuntu
+docker__users:
+  - ubuntu
