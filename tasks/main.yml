@@ -59,7 +59,7 @@
         - "50000:50000"
       volumes:
         - /data/jenkins:/var/jenkins_home
-      environment:
+      env:
         JENKINS_HOME=/var/jenkins_home
       state: started
 #      volumes:
