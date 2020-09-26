@@ -58,9 +58,5 @@
         - "8080:8080"
         - "50000:50000"
       volumes:
-        - /home/ubuntu/jenkins:/var/jenkins_home
-      env:
-        JENKINS_HOME=/var/jenkins_home
+        - /var/jenkins_home:/home/ubuntu/jenkins
       state: started
-#      volumes:
-#        - jenkins_home:/home/ubuntu/jenkins_home
