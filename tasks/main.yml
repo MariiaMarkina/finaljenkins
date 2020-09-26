@@ -56,7 +56,11 @@
       image: myjenkins
       ports:
         - "8080:8080"
+        - "50000:50000"
       state: started
-#      command: cat /var/jenkins_home/secrets/initialAdminPassword
+      volumes:
+        - data/jenkins:/var/jenkins_home
+      environment:
+        - JENKINS_HOME=/var/jenkins_home
 #      volumes:
 #        - jenkins_home:/home/ubuntu/jenkins_home
