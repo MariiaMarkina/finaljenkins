@@ -57,10 +57,10 @@
       ports:
         - "8080:8080"
         - "50000:50000"
-      state: started
       volumes:
-        - data/jenkins:/var/jenkins_home
+        - /data/jenkins:/var/jenkins_home
       environment:
-        - JENKINS_HOME=/var/jenkins_home
+        JENKINS_HOME=/var/jenkins_home
+      state: started
 #      volumes:
 #        - jenkins_home:/home/ubuntu/jenkins_home
