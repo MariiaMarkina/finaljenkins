@@ -1,6 +1,6 @@
 git
 docker
-ec2
+workflow-aggregator
 docker-workflow
 ssh
 publish-over-ssh
