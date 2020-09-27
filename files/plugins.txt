@@ -2,4 +2,6 @@ git
 docker
 ec2
 docker-workflow
+ssh
 publish-over-ssh
+ssh-steps
