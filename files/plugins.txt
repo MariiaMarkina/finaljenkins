@@ -6,3 +6,4 @@ docker-workflow
 ssh
 publish-over-ssh
 ssh-steps
+versionnumber
