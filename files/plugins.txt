@@ -1,5 +1,6 @@
 git
 docker
+github
 workflow-aggregator
 docker-workflow
 ssh
