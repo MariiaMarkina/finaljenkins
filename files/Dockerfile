@@ -3,7 +3,8 @@ MAINTAINER mariia markina <MariaMarkinaV@gmail.com>
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 COPY app_dev_ip.txt /usr/share/app_dev_ip.txt
 COPY app_prod_ip.txt /usr/share/app_prod_ip.txt
-ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+ENV JAVA_OPTS="jenkins.install.runSetupWizard=false ${JAVA_OPTS}"
+#ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 ENV JENKINS_OPTS=--argumentsRealm.roles.user=admin --argumentsRealm.passwd.admin=${PASSWORD} --argumentsRealm.roles.admin=admin
 #ENV JENKINS_USER admin
 #ENV JENKINS_PASS admin
