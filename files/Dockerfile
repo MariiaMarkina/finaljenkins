@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:lts
 MAINTAINER mariia markina <MariaMarkinaV@gmail.com>
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
-COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
+#COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 COPY app_dev_ip.txt /usr/share/app_dev_ip.txt
 COPY app_prod_ip.txt /usr/share/app_prod_ip.txt
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
