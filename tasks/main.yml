@@ -39,10 +39,10 @@
       src: plugins.txt
       dest: /home/ubuntu/plugins.txt
       
-  - name: copy groovy script
-    copy:
-      src: default-user.groovy
-      dest: /home/ubuntu/default-user.groovy
+#  - name: copy groovy script
+#    copy:
+#      src: default-user.groovy
+#      dest: /home/ubuntu/default-user.groovy
   
   - name: installing python-docker
     package: name=python-docker state=latest
